@@ -1,0 +1,53 @@
+matches:
+  - trigger: ":tomorrow"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: 86400
+
+  - trigger: ":yesterday"
+    replace: "{{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%Y-%m-%d"
+          offset: -86400
+
+  - trigger: ":dev"
+    replace: "9.135.12.153"
+  # 时间戳
+  - trigger: ":tsp"
+    replace: "{{time}}"
+    vars:
+      - name: time
+        type: date
+        params:
+          format: "%s"
+  - trigger: ":tm"
+    replace: "{{time}}"
+    vars: 
+      - name: time
+        type: date
+        params:
+          format: "%Y%m%d%H%M%S"
+  # scp传输
+  - trigger: ":scp"
+    replace: "scp -P 36000 $|$ monkiqchen@9.135.12.153"
+
+  # csighub域名
+  - trigger: ":csig"
+    replace: "csighub.tencentyun.com/monkiqchen/"
+  # monkiqchen
+  - trigger: ":mq"
+    replace: "monkiqchen"
+
+  # docker run --rm --platform linux/amd64 csighub.tencentyun.com/monkiqchen/
+  - trigger: ":drx64"
+    replace: "docker run --rm --platform linux/amd64 csighub.tencentyun.com/monkiqchen/"
+      
+  - trigger: ":dit"
+    replace: "docker exec -it $(docker ps | awk '{print $1}' | sed -n '2,2p') /bin/bash"
