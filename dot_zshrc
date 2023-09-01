@@ -32,8 +32,8 @@ function plugin-load {
 # make a github repo plugins list
 plugins=(
 #  sindresorhus/pure
-	romkatv/powerlevel10k
-	mattmc3/zman
+  romkatv/powerlevel10k
+  mattmc3/zman
   rummik/zsh-tailf
   peterhurford/up.zsh
   zsh-users/zsh-autosuggestions
