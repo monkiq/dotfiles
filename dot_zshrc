@@ -4,7 +4,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
+autoload -Uz compinit && compinit
 SAVEHIST=2000  # Save most-recent 1000 lines
 HISTFILE=~/.zsh_history
 ##? Clone a plugin, identify its init file, source it, and add it to your fpath.
