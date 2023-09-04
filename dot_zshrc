@@ -5,48 +5,64 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 autoload -Uz compinit && compinit
-SAVEHIST=2000  # Save most-recent 1000 lines
-HISTFILE=~/.zsh_history
-##? Clone a plugin, identify its init file, source it, and add it to your fpath.
-function plugin-load {
-  local repo plugdir initfile initfiles=()
-  : ${ZPLUGINDIR:=${ZDOTDIR:-~/.config/zsh}/plugins}
-  for repo in $@; do
-    plugdir=$ZPLUGINDIR/${repo:t}
-    initfile=$plugdir/${repo:t}.plugin.zsh
-    if [[ ! -d $plugdir ]]; then
-      echo "Cloning $repo..."
-      git clone -q --depth 1 --recursive --shallow-submodules \
-        https://github.com/$repo $plugdir
-    fi
-    if [[ ! -e $initfile ]]; then
-      initfiles=($plugdir/*.{plugin.zsh,zsh-theme,zsh,sh}(N))
-      (( $#initfiles )) || { echo >&2 "No init file found '$repo'." && continue }
-      ln -sf $initfiles[1] $initfile
-    fi
-    fpath+=$plugdir
-    (( $+functions[zsh-defer] )) && zsh-defer . $initfile || . $initfile
-  done
-}
 
-# make a github repo plugins list
-plugins=(
-#  sindresorhus/pure
-  romkatv/powerlevel10k
-  mattmc3/zman
-  rummik/zsh-tailf
-  peterhurford/up.zsh
-  zsh-users/zsh-autosuggestions
-  zsh-users/zsh-history-substring-search
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+  # zinit ice depth"1"
+	# zinit light romkatv/powerlevel10k
+
+  zinit ice pick"async.zsh" src"pure.zsh"
+  zinit light sindresorhus/pure
+
+  zinit light mattmc3/zman
+
+  zinit ice wait lucid atload'_zsh_autosuggest_start'
+  zinit light zsh-users/zsh-autosuggestions
+  zinit light zsh-users/zsh-history-substring-search
+
+  zinit snippet OMZ::/plugins/magic-enter
+  zinit snippet OMZ::/plugins/sudo
+  
 
   # load these at hypersonic load speeds with zsh-defer
-  romkatv/zsh-defer
-  olets/zsh-abbr
-  zdharma-continuum/fast-syntax-highlighting
-  Aloxaf/fzf-tab
-  joshskidmore/zsh-fzf-history-search
-)
-plugin-load $plugins
+  zinit light zdharma-continuum/fast-syntax-highlighting
+  zinit light Aloxaf/fzf-tab
+  zinit light joshskidmore/zsh-fzf-history-search
+
+# commands starting with space
+setopt hist_reduce_blanks    # remove all unneccesary spaces
+setopt share_history         # share history between sessions
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000  # number of commands that are loaded
+SAVEHIST=1000000  # number of commands that are stored
+
+
+#zsh config 
+setopt AUTO_PUSHD
+setopt auto_cd               # simply type dir name to `cd`
+setopt auto_pushd            # make `cd` behave like pushd
+setopt pushd_ignore_dups     # don't pushd duplicates
+setopt pushd_minus           # exchange the meanings of `+` and `-` in pushd
+setopt interactive_comments  # comments in interactive shells
+setopt multios               # multiple redirections
+setopt ksh_option_print      # make `setopt` output all options
+setopt extended_glob         # extended globbing
+setopt glob_dots             # match hidden files like `PATTERN(D)`, also affect completion
+# setopt no_bare_glob_qual   # disable `PATTERN(QUALIFIERS)`, extended_glob has `PATTERN(#qQUALIFIERS)`
+unsetopt short_loops         # disable for-loops without a sublist
+WORDCHARS='*?_-.[]~&;!#$%^(){}<>'  # without `/=`
+autoload -Uz colors && colors  # provide color variables (see `which colors`)
+
+# zsh history
+setopt hist_ignore_all_dups  # no duplicates
+setopt hist_save_no_dups     # don't save duplicates
+setopt hist_ignore_space     # no 
+export EDITOR='vim'
+export VISUAL='vim'
 
 
 if [ "$(uname)" = "Darwin" ]; then
