@@ -3,3 +3,4 @@
 e400c4ed42c7eff22d48c3c1149f2a3fa8c84a6b 77c8f5043011a823f07f467095167f534a622ef9 monkiqchen <monkiqchen@tencent.com> 1693447184 +0800	commit: 添加colorscheme.lua
 77c8f5043011a823f07f467095167f534a622ef9 e68efbed3c857ff1e54620843ec1250d5a2e2161 monkiqchen <monkiqchen@tencent.com> 1693447217 +0800	commit: 添加neo-tree.lua和noice.lua
 e68efbed3c857ff1e54620843ec1250d5a2e2161 c192734f9ac92408559593c2ddce2481cd67e462 monkiqchen <monkiqchen@tencent.com> 1693475924 +0800	commit: 添加diffview
+c192734f9ac92408559593c2ddce2481cd67e462 a1261610c521676c5585b9f09064ab956228c143 monkiqchen <monkiqchen@tencent.com> 1693797482 +0800	commit: 添加多光标支持
