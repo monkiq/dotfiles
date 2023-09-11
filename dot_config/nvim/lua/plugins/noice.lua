@@ -4,7 +4,7 @@ return {
     views = {
       cmdline_popup = {
         position = {
-          row = 15,
+          row = 35,
           col = "50%",
         },
         size = {

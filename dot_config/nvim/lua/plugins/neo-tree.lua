@@ -16,7 +16,7 @@ return {
       desc = "Explorer NeoTree (cwd)",
     },
     {
-      "<leader>cs",
+      "<leader>css",
       function()
         require("neo-tree.command").execute({ toggle = true, source = "document_symbols", position = "right" })
       end,
