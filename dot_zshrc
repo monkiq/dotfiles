@@ -46,7 +46,6 @@ setopt multios               # multiple redirections
 setopt ksh_option_print      # make `setopt` output all options
 setopt extended_glob         # extended globbing
 setopt glob_dots             # match hidden files like `PATTERN(D)`, also affect completion
-# setopt no_bare_glob_qual   # disable `PATTERN(QUALIFIERS)`, extended_glob has `PATTERN(#qQUALIFIERS)`
 unsetopt short_loops         # disable for-loops without a sublist
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'  # without `/=`
 autoload -Uz colors && colors  # provide color variables (see `which colors`)
