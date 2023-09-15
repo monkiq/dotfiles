@@ -54,14 +54,15 @@ autoload -Uz colors && colors  # provide color variables (see `which colors`)
 setopt hist_ignore_all_dups  # no duplicates
 setopt hist_save_no_dups     # don't save duplicates
 setopt hist_ignore_space     # no 
-export EDITOR='vim'
-export VISUAL='vim'
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 
 if [ "$(uname)" = "Darwin" ]; then
       export PATH="/Users/monkiq/go/bin:$PATH"
       export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
       test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+      export PATH="/Users/monkiq/.cargo/bin:$PATH"
 	if [ -d "${HOME}/.nvm" ]; then
 	      export NVM_DIR="$HOME/.nvm"
 	      [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -78,7 +79,7 @@ elif [ "$(uname)"="Linux" ]; then
 fi
 
 eval $(thefuck --alias)
-
+eval "$(zellij setup --generate-auto-start zsh)"
 # g shell setup
 if [ -f "${HOME}/.g/env" ]; then
     . "${HOME}/.g/env"
@@ -99,3 +100,6 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source ~/.config/zsh/aliases.sh
+source ~/.config/zsh/functions.sh
