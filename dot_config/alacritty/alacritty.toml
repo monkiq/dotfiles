@@ -1,0 +1,9 @@
+live_config_reload = true
+window.opacity = 1.0
+[font]
+size = 14
+[font.normal]
+family = "Jetbrains Nerd Font"
+style = "Regular"
+[shell]
+program = "/bin/zsh"

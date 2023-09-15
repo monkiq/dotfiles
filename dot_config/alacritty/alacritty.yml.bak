@@ -1,0 +1,61 @@
+---
+env:
+  TERM: alacritty
+
+import:
+  - ~/.config/alacritty/themes/dracula.yml
+
+window:
+  opacity: 1.0
+  title: Alacritty
+  dynamic_title: true
+  class:
+    instance: Alacritty
+    general: Alacritty
+
+scrolling:
+  history: 100000
+  multiplier: 6
+# 设置字体
+# 字体下载: https://www.nerdfonts.com/font-downloads
+# 图标符号搜索: https://www.nerdfonts.com/cheat-sheet
+# 推荐备选字体: JetBrains Mono Regular Nerd Font Complete Mono
+font:
+  normal:
+    family: 'JetBrainsMono Nerd Font Mono'
+    style: Regular
+  bold:
+    family: 'JetBrainsMono Nerd Font Mono'
+    style: Regular
+  italic:
+    family: 'JetBrainsMono Nerd Font Mono'
+    style: Italic
+  bold_italic:
+    family: 'SauceCodePro Nerd Font Mono'
+    style: Italic
+
+  # 字体大小
+  size: 14.0
+
+  offset:
+    x: 0
+    y: 4
+  glyph_offset:
+    x: 0
+    y: 2
+
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+  unfocused_hollow: false
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+  save_to_clipboard: true
+shell:
+  program: /bin/zsh
+live_config_reload: true
+
+# 全屏显示窗口, 绑定快捷键 Ctrl-x
+key_bindings:
+  - { key: Z, mods: Control, action: ToggleSimpleFullscreen }
