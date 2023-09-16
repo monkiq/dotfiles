@@ -79,7 +79,7 @@ elif [ "$(uname)"="Linux" ]; then
 fi
 
 eval $(thefuck --alias)
-eval "$(zellij setup --generate-auto-start zsh)"
+# eval "$(zellij setup --generate-auto-start zsh)"
 # g shell setup
 if [ -f "${HOME}/.g/env" ]; then
     . "${HOME}/.g/env"
