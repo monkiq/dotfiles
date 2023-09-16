@@ -51,3 +51,6 @@ matches:
       
   - trigger: ":dit"
     replace: "docker exec -it $(docker ps | awk '{print $1}' | sed -n '2,2p') /bin/bash"
+
+  - trigger: "!tmt"
+    replace: "tmux attach -t"
