@@ -13,6 +13,7 @@ return {
         nls.builtins.code_actions.impl,
         nls.builtins.formatting.gofmt,
         nls.builtins.formatting.goimports_reviser,
+        nls.builtins.formatting.goimports,
       },
     }
   end,
