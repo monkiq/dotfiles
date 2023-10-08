@@ -1,12 +1,29 @@
 layout {
     default_tab_template {
+        pane size=1 borderless=true{
+            plugin location="zellij:tab-bar"
+          }
         children
         pane size=1 borderless=true {
-            plugin location="file:/Users/monkiq/.config/zellij/plugins/statusbar.wasm"
+            plugin location="zellij:status-bar"
           }
       }
     tab name="terminal" {
         pane
         pane size="30%"
+    }
+
+    swap_tiled_layout name="h2v" {
+          tab max_panes=2 {
+              pane
+              pane
+          }
+          tab {
+            pane split_direction="vertical" {
+                pane
+                pane
+                pane
+            }
+          }
     }
 }
