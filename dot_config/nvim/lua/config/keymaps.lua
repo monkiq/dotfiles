@@ -18,3 +18,9 @@ local function map(mode, lhs, rhs, opts)
 end
 map({ "n", "v" }, "<C-u>", "9k", { desc = "move up 9 line" })
 map({ "n", "v" }, "<C-d>", "9j", { desc = "move down 9 line" })
+
+-- Resize window using <ctrl> arrow keys
+map("n", "<A-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
