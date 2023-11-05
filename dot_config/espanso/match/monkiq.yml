@@ -1,4 +1,5 @@
 matches:
+# 时间类
   - trigger: ":tomorrow"
     replace: "{{mytime}}"
     vars:
@@ -7,7 +8,6 @@ matches:
         params:
           format: "%Y-%m-%d"
           offset: 86400
-
   - trigger: ":yesterday"
     replace: "{{mytime}}"
     vars:
@@ -16,41 +16,46 @@ matches:
         params:
           format: "%Y-%m-%d"
           offset: -86400
-
-  - trigger: ":dev"
-    replace: "9.135.12.153"
-  # 时间戳
-  - trigger: ":tsp"
+  - trigger: ":tsp" # 时间戳
     replace: "{{time}}"
     vars:
       - name: time
         type: date
         params:
           format: "%s"
-  - trigger: ":tm"
+  - trigger: ":tm" #当前时间
     replace: "{{time}}"
     vars: 
       - name: time
         type: date
         params:
-          format: "%Y%m%d%H%M%S"
-  # scp传输
-  - trigger: ":scp"
-    replace: "scp -P 36000 $|$ monkiqchen@9.135.12.153"
-
-  # csighub域名
-  - trigger: ":csig"
+          format: "%Y%m%d%H%M"
+  - trigger: ":now"
+    replace: "{{time}}"
+    vars: 
+      - name: time
+        type: date
+        params:
+          format: "%Y/%m/%d-%H:%M"
+  # 热字符串
+  - trigger: ":csig"  # csighub域名
     replace: "csighub.tencentyun.com/monkiqchen/"
-  # monkiqchen
-  - trigger: ":mq"
+  - trigger: ":mq" # monkiqchen
     replace: "monkiqchen"
-
-  # docker run --rm --platform linux/amd64 csighub.tencentyun.com/monkiqchen/
+  - trigger: ":dev"
+    replace: "9.135.12.153"
+  - trigger: ":xz"
+    replace: "新增API和指标"
+  - trigger: ":cl"
+    replace: "变更策略"
+  # 命令 
+  - trigger: ":scp" # scp传输
+    replace: "scp -P 36000 $|$ monkiqchen@9.135.12.153"
   - trigger: ":drx64"
     replace: "docker run --rm --platform linux/amd64 csighub.tencentyun.com/monkiqchen/"
-      
   - trigger: ":dit"
     replace: "docker exec -it $(docker ps | awk '{print $1}' | sed -n '2,2p') /bin/bash"
-
   - trigger: "!tmt"
     replace: "tmux attach -t"
+  - trigger: "!note"
+    replace: "vim ~/Documents/vscode_Notes\n"
