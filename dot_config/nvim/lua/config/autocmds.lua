@@ -3,11 +3,11 @@
 -- Add any additional autocmds here
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function(event)
-    if event.operator == "y" and event.regname == "+" then
-      vim.fn.OSCYankRegister("+")
+    if event.operator == "y" then
+      vim.fn.OSCYankRegister('""')
     end
-    if event.operator == "d" and event.regname == "+" then
-      vim.fn.OSCYankRegister("+")
+    if event.operator == "d" then
+      vim.fn.OSCYankRegister('""')
     end
   end,
 })
