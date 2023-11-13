@@ -63,7 +63,7 @@ if [ "$(uname)" = "Darwin" ]; then
       export PATH="/opt/homebrew/opt/go@1.19/bin:$PATH"
       test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
       export PATH="/Users/monkiq/.cargo/bin:$PATH"
-	if [ -z "${HOME}/.nvm" ]; then
+	if [ -d "${HOME}/.nvm" ]; then
 	      export NVM_DIR="$HOME/.nvm"
 	      [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 	      [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
